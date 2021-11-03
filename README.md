@@ -6,6 +6,8 @@
 1] python Version > = 3.5.1 </br>
  2] cv2 == 4.5.4.58 </br>
  3] cvzone == 1.4.1     &nbsp; &nbsp; &nbsp; &nbsp; //for hand motion detection </br>
+ 4] pynput == 1.7.4  &nbsp; &nbsp; &nbsp; &nbsp; //for pressing actual keyboard key to type inside file </br>
+
  
  # Manual to Use
  
