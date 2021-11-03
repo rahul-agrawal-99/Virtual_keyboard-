@@ -2,7 +2,7 @@
 Author : @Rahul Agrwal         
 Github: " https://github.com/rahul-agrawal-99 "
 title : Virtual Keyboard
-software-dependencies : opencv, numpy
+software-dependencies : opencv, numpy ,pynput , cvzone
 hardware-dependencies : camera
 
 '''
@@ -10,7 +10,10 @@ hardware-dependencies : camera
 import cv2 as cv  # Version :  4.5.4.58
 import numpy as np  # Version :  1.21.3
 from cvzone.HandTrackingModule import  HandDetector  # Version : 1.4.1
+from pynput.keyboard import Controller  # Version :  1.7.4
 
+# initializing the Controller for pressing keys
+keyboard = Controller()
 
 #  it is list contains all the keybord buttons with their coordinates
 #  0th position : Key Value
@@ -49,7 +52,7 @@ btnlist = [["Q", 100 , 100 , 100 , 100 ],
            
            
            [" ", 450, 450 , 430 , 100],   # sapce bar
-           ["Enter",1210, 220 , 200 , 100]  # Enter 
+           ["Enter",1210, 220 , 200 , 100]  # Enter  key
       
            
            
@@ -100,8 +103,10 @@ while True:
                     #  avoid multiple clicks on the same button 
                     if i[0] != msg[len(msg)-1]:
                         if i[0]=="Enter":
+                            keyboard.press("\n")
                             msg =msg + "\n"
                         else:    
+                            keyboard.press(i[0])
                             msg =msg + i[0]
     else:
         cv.putText(f,f"No Hand Detected",(200,400),cv.FONT_HERSHEY_SIMPLEX,3,(0,0,255),5)
